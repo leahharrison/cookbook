@@ -1,0 +1,60 @@
+<h3>Welcome {{name}}!</h3>
+{{#if recipes}}
+<div class="profile">
+    <table class="striped table">
+        <thead>
+            <tr>
+                <th>Grocery List</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each recipes}}
+            <tr>
+                <td><a href="/recipes/{{_id}}">{{title}}</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <table class="striped table">
+        <thead>
+            <tr>
+                <th>Pantry</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each recipes}}
+            <tr>
+                <td><a href="/recipes/{{_id}}">{{title}}</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <table class="striped table">
+        <thead>
+            <tr>
+                <th>Recipes</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each recipes}}
+            <tr>
+                <td><a href="/recipes/{{_id}}">{{title}}</a></td>
+                <td>
+                    <form action="/recipes/{{_id}}" method="POST" id="delete-form">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn red">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+            </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+{{else}}
+<p>You have not created any recipes</p>
+{{/if}}
